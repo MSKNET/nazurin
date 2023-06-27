@@ -140,16 +140,18 @@ class NazurinBot(Bot):
     ):
         if isinstance(illust, Ugoira):
             await self.send_illust(illust, message, config.GALLERY_ID)
-        elif (
-            message
-            and message.forward_origin is not None
-            and message.photo
-            # If there're multiple images,
-            # then send a new message instead of forwarding an existing one,
-            # since we currently can't forward albums correctly.
-            and not illust.has_multiple_images()
-        ):
-            await message.forward(config.GALLERY_ID)
+        # Forward disabled
+        #
+        # elif (
+        #     message
+        #     and message.forward_origin is not None
+        #     and message.photo
+        #     # If there're multiple images,
+        #     # then send a new message instead of forwarding an existing one,
+        #     # since we currently can't forward albums correctly.
+        #     and not illust.has_multiple_images()
+        # ):
+        #     await message.forward(config.GALLERY_ID)
         elif not illust.has_image():
             await self.send_message(config.GALLERY_ID, "\n".join(urls))
         else:
