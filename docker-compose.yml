@@ -1,14 +1,27 @@
 version: "3.4"
 
 services:
-  nazurin:
+  misakapics:
     # Alternatively, you may use "yyoung01/nazurin:latest"
-    image: ghcr.io/y-young/nazurin:latest
+    image: nazurin
+    container_name: misakapics
     build: .
     env_file:
-      - ".env"
+      - ".env.misakapics"
     volumes:
-      - "./data:/app/data"
+      - "./datas:/app/data"
     ports:
-      - "80"
+      - "127.0.0.1:10002:80"
+    restart: unless-stopped
+
+  misakah:
+    image: nazurin
+    container_name: misakah
+    build: .
+    env_file:
+      - ".env.misakah"
+    volumes:
+      - "./datah:/app/data"
+    ports:
+      - "127.0.0.1:10003:80"
     restart: unless-stopped
