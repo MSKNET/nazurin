@@ -1,0 +1,2 @@
+.env.misakah filter=git-crypt diff=git-crypt
+.env.misakapics filter=git-crypt diff=git-crypt
